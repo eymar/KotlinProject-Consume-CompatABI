@@ -13,10 +13,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import kotlinproject_consume_compatabi.composeapp.generated.resources.Res
+import kotlinproject_consume_compatabi.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
 
-import kotlinprojecttestneweststdlib.composeapp.generated.resources.Res
-import kotlinprojecttestneweststdlib.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 fun App() {
