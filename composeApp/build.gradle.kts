@@ -92,8 +92,18 @@ project.extensions.configure(KotlinMultiplatformExtension::class.java) {
 // We substitute the kotlin-stdlib version here, because `lib` brings a transitive dependency on a newer stdlib (newer ABI)
 project.configurations.configureEach {
     resolutionStrategy.eachDependency {
+        val version = "2.2.21"
         if (requested.group == "org.jetbrains.kotlin" && requested.name.startsWith("kotlin-stdlib")) {
-            useVersion("2.2.21")
+            useVersion(version)
+        }
+
+        if (requested.name.startsWith("kotlin-dom-api-compat")) {
+            /**
+             * Otherwise there is an error at runtime (k/js only):
+             * IrLinkageError
+             * "Function 'EventListener' can not be called: No function found for symbol 'org.w3c.dom.events/EventListener|EventListener(kotlin.Function1<org.w3c.dom.events.Event,kotlin.Unit>){}[0]'"
+             */
+            useVersion(version)
         }
     }
 }
